@@ -1,0 +1,26 @@
+{
+  "name": "dex-proje",
+  "version": "1.0.0",
+  "description": "İTÜ Blockchain Kulübü DEX Projesi",
+  "main": "script/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node script/app.js",
+    "anvil": "anvil"
+  },
+  "keywords": [
+    "blockchain",
+    "dex",
+    "solidity",
+    "foundry"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "viem": "^2.0.0",
+    "inquirer": "^9.2.12",
+    "dotenv": "^16.3.1"
+  }
+}
+
+

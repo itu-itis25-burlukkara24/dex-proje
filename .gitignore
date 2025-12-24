@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+lib/
+
+# Build artifacts
+out/
+cache/
+broadcast/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+
