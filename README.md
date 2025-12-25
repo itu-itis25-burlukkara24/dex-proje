@@ -1,22 +1,20 @@
-# 🔥 Souls DEX: The Shrine of Equivalent Exchange
+## 📜 The Lore: Equivalent Exchange (Eşdeğer Takas Yasası)
 
-> *"Lekelenmiş (Tarnished) olanlar için bir sığınak... Zeka arayan İnancından vazgeçmeli, İnanç arayan ise Zekasını feda etmeli."*
+*"Kadim zamanlarda, bir Tarnished hem büyücü (Intelligence) hem de rahip (Faith) olamazdı. Birinden vazgeçmeden, diğerinde ustalaşmak imkansızdı."*
 
-**Souls DEX**, İTÜ Blockchain Kulübü 7. Hafta projesi kapsamında geliştirilmiş, **Souls-like** temalı bir merkeziyetsiz borsadır (DEX).
+**Souls DEX**, bu kadim kuralı **AMM (Otomatik Piyasa Yapıcı)** teknolojisiyle yeniden yazar. Burada takas, bir tüccarla değil, matematiksel bir "Yasa" ile yapılır.
 
-Bu proje, oyuncuların (kullanıcıların) iki ana stat olan **Intelligence (INT)** ve **Faith (FTH)** arasında, **Uniswap V2 AMM** mantığını kullanarak takas yapmasını sağlar.
+### 🔥 Bonfire (Likidite Havuzu)
+DEX'in kalbinde sönmeyen bir ateş yanar. Bu ateşe **Likidite Havuzu** denir.
+- Eğer ateşe odun atmazsanız (Likidite Eklemezseniz), ateş söner ve kimse ısınamaz (Takas yapamaz).
+- Ateşi besleyenler, bu ekosistemin "Ateş Bekçileri"dir.
 
----
+### ⚖️ The Law of Scarcity (Kıtlık Kuralı)
+Evrenin dengesi şu formülle korunur: `x * y = k`.
+- Havuzdaki **Intelligence** parşömenleri azalırsa, kalanlar nadirleşir ve değerleri artar.
+- Onları almak isteyen kişi, sunağa çok daha fazla **Faith** yani rahiplik becerisi bırakmak zorundadır.
 
-## ⚔️ Konsept: Zeka ve İnanç Dengesi (AMM Mantığı)
-
-Souls evreninde "stat" değiştirmek (respec) zordur. Souls DEX'te ise bu denge matematiksel bir formülle korunur:
-
-$$x \cdot y = k$$
-
-* **Havuz (Bonfire):** Likidite havuzu, dünyanın dengesidir.
-* **Kıtlık Kuralı:** Eğer havuzdaki **Intelligence** azalırsa (herkes INT alıyorsa), kalan INT'lerin değeri artar. Onu almak için daha fazla **Faith** feda etmeniz gerekir.
-* **Equivalent Exchange:** Değer yoktan var edilmez, sadece dönüştürülür.
+**Özetle:** Souls DEX'te fiyatı belirleyen bir patron yoktur; fiyatı belirleyen tek şey, havuzdaki **kıtlık ve bolluktur.**
 
 ---
 
