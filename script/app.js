@@ -385,6 +385,85 @@ async function swap() {
     }
 }
 
+async function transfer() {
+    if (!intelligenceAddress || !faithAddress) {
+        console.log('❌ Token adresleri tanımlı değil!');
+        return;
+    }
+    
+    const intelligenceSymbol = await getTokenSymbol(intelligenceAddress);
+    const faithSymbol = await getTokenSymbol(faithAddress);
+    const userAddress = account.address;
+    
+    const answers = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'token',
+            message: 'Hangi tokenı transfer etmek istiyorsunuz?',
+            choices: [
+                { name: `${intelligenceSymbol} (Intelligence)`, value: intelligenceAddress },
+                { name: `${faithSymbol} (Faith)`, value: faithAddress }
+            ]
+        },
+        {
+            type: 'input',
+            name: 'to',
+            message: 'Alıcı adresi:',
+            validate: (input) => {
+                if (!/^0x[a-fA-F0-9]{40}$/.test(input)) {
+                    return 'Geçerli bir Ethereum adresi girin (0x ile başlamalı, 42 karakter)';
+                }
+                return true;
+            }
+        },
+        {
+            type: 'input',
+            name: 'amount',
+            message: 'Transfer miktarı (ether cinsinden):',
+            validate: async (input) => {
+                const num = parseFloat(input);
+                if (num <= 0) {
+                    return 'Miktar 0\'dan büyük olmalı';
+                }
+                return true;
+            }
+        }
+    ]);
+    
+    try {
+        const amount = parseEther(answers.amount);
+        const tokenAddress = answers.token;
+        const tokenSymbol = tokenAddress === intelligenceAddress ? intelligenceSymbol : faithSymbol;
+        
+        // Bakiye kontrolü
+        const balance = await getBalance(tokenAddress, userAddress);
+        if (balance < amount) {
+            console.log(`❌ Yetersiz bakiye! Mevcut: ${formatEther(balance)} ${tokenSymbol}`);
+            return;
+        }
+        
+        console.log('\n⏳ İşlem gönderiliyor...');
+        
+        const hash = await walletClient.writeContract({
+            address: tokenAddress,
+            abi: ERC20_ABI,
+            functionName: 'transfer',
+            args: [answers.to, amount]
+        });
+        
+        console.log(`⏳ İşlem hash: ${hash}`);
+        const receipt = await publicClient.waitForTransactionReceipt({ hash });
+        
+        if (receipt.status === 'success') {
+            console.log(`✅ ${formatEther(amount)} ${tokenSymbol} başarıyla ${answers.to} adresine transfer edildi!`);
+        } else {
+            console.log('❌ İşlem başarısız oldu');
+        }
+    } catch (error) {
+        console.error('❌ Hata:', error.message);
+    }
+}
+
 async function main() {
     console.log('🔥 Souls DEX\'e Hoş Geldiniz! 🔥');
     console.log(`📡 Anvil RPC: ${RPC_URL}`);
@@ -400,6 +479,7 @@ async function main() {
                     'Likidite Ekle',
                     'Likidite Kaldır',
                     'Swap Yap',
+                    'Transfer Yap',
                     'Bakiyeleri Gör',
                     'Çıkış'
                 ]
@@ -415,6 +495,9 @@ async function main() {
                 break;
             case 'Swap Yap':
                 await swap();
+                break;
+            case 'Transfer Yap':
+                await transfer();
                 break;
             case 'Bakiyeleri Gör':
                 await showBalances();

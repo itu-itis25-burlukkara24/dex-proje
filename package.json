@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node script/app.js",
+    "setup": "node script/setup.js",
     "anvil": "anvil"
   },
   "keywords": [

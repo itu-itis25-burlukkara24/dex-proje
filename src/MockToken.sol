@@ -16,5 +16,10 @@ contract MockToken is ERC20 {
     function mint(uint256 amount) external {
         _mint(msg.sender, amount);
     }
+    
+    // 🆕 Başkasına token basma fonksiyonu (Setup için)
+    function mintTo(address to, uint256 amount) external {
+        _mint(to, amount);
+    }
 }
 
