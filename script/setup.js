@@ -125,8 +125,8 @@ function updateEnvFile(addresses) {
     // Yeni değerleri ekle/güncelle
     envMap.set('PRIVATE_KEY', DEPLOYER_ACCOUNT.privateKey);
     envMap.set('RPC_URL', RPC_URL);
-    envMap.set('INTELLIGENCE_ADDRESS', addresses.intelligence);
-    envMap.set('FAITH_ADDRESS', addresses.faith);
+    envMap.set('TOKEN_A_ADDRESS', addresses.intelligence); // app.js ile uyumlu isim
+    envMap.set('TOKEN_B_ADDRESS', addresses.faith);        // app.js ile uyumlu isim
     envMap.set('DEX_ADDRESS', addresses.dex);
     
     // .env dosyasını yaz
@@ -144,8 +144,9 @@ async function main() {
     try {
         // 1. Intelligence Token deploy
         console.log('📦 Intelligence (INT) token deploy ediliyor...');
+        // DÜZELTME: --constructor-args EN SONA ALINDI
         const intelligenceOutput = execSync(
-            `forge create src/MockToken.sol:MockToken --constructor-args "Intelligence" "INT" 0 --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey}`,
+            `forge create src/MockToken.sol:MockToken --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey} --constructor-args "Intelligence" "INT" 1000`,
             { encoding: 'utf-8', cwd: path.join(__dirname, '..') }
         );
         const intelligenceAddress = parseContractAddress(intelligenceOutput);
@@ -156,8 +157,9 @@ async function main() {
         
         // 2. Faith Token deploy
         console.log('📦 Faith (FTH) token deploy ediliyor...');
+        // DÜZELTME: --constructor-args EN SONA ALINDI
         const faithOutput = execSync(
-            `forge create src/MockToken.sol:MockToken --constructor-args "Faith" "FTH" 0 --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey}`,
+            `forge create src/MockToken.sol:MockToken --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey} --constructor-args "Faith" "FTH" 1000`,
             { encoding: 'utf-8', cwd: path.join(__dirname, '..') }
         );
         const faithAddress = parseContractAddress(faithOutput);
@@ -168,8 +170,9 @@ async function main() {
         
         // 3. DEX deploy
         console.log('📦 SimpleDEX kontratı deploy ediliyor...');
+        // DÜZELTME: --constructor-args EN SONA ALINDI
         const dexOutput = execSync(
-            `forge create src/SimpleDEX.sol:SimpleDEX --constructor-args ${intelligenceAddress} ${faithAddress} --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey}`,
+            `forge create src/SimpleDEX.sol:SimpleDEX --rpc-url ${RPC_URL} --private-key ${DEPLOYER_ACCOUNT.privateKey} --constructor-args ${intelligenceAddress} ${faithAddress}`,
             { encoding: 'utf-8', cwd: path.join(__dirname, '..') }
         );
         const dexAddress = parseContractAddress(dexOutput);
@@ -184,7 +187,7 @@ async function main() {
         
         for (let i = 0; i < ANVIL_ACCOUNTS.length; i++) {
             const account = ANVIL_ACCOUNTS[i];
-            console.log(`  → Hesap ${i + 1}/10: ${account.address}`);
+            console.log(`   → Hesap ${i + 1}/10: ${account.address}`);
             
             // Intelligence token bas
             const intHash = await walletClient.writeContract({
@@ -234,4 +237,3 @@ async function main() {
 }
 
 main().catch(console.error);
-
