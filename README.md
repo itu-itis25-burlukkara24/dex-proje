@@ -1,20 +1,22 @@
-## 📜 The Lore: Equivalent Exchange (Eşdeğer Takas Yasası)
+# 🔥 Souls DEX: The Shrine of Equivalent Exchange
 
-*"Kadim zamanlarda, bir Tarnished hem büyücü (Intelligence) hem de rahip (Faith) olamazdı. Birinden vazgeçmeden, diğerinde ustalaşmak imkansızdı."*
+> *"Lekelenmiş (Tarnished) olanlar için bir sığınak... Zeka arayan İnancından vazgeçmeli, İnanç arayan ise Zekasını feda etmeli."*
 
-**Souls DEX**, bu kadim kuralı **AMM (Otomatik Piyasa Yapıcı)** teknolojisiyle yeniden yazar. Burada takas, bir tüccarla değil, matematiksel bir "Yasa" ile yapılır.
+**Souls DEX**, İTÜ Blockchain Kulübü 7. Hafta projesi kapsamında geliştirilmiş, **Souls-like** temalı bir merkeziyetsiz borsadır (DEX).
 
-### 🔥 Bonfire (Likidite Havuzu)
-DEX'in kalbinde sönmeyen bir ateş yanar. Bu ateşe **Likidite Havuzu** denir.
-- Eğer ateşe odun atmazsanız (Likidite Eklemezseniz), ateş söner ve kimse ısınamaz (Takas yapamaz).
-- Ateşi besleyenler, bu ekosistemin "Ateş Bekçileri"dir.
+Bu proje, oyuncuların (kullanıcıların) iki ana stat olan **Intelligence (INT)** ve **Faith (FTH)** arasında, **Uniswap V2 AMM** mantığını kullanarak takas yapmasını sağlar.
 
-### ⚖️ The Law of Scarcity (Kıtlık Kuralı)
-Evrenin dengesi şu formülle korunur: `x * y = k`.
-- Havuzdaki **Intelligence** parşömenleri azalırsa, kalanlar nadirleşir ve değerleri artar.
-- Onları almak isteyen kişi, sunağa çok daha fazla **Faith** yani rahiplik becerisi bırakmak zorundadır.
+---
 
-**Özetle:** Souls DEX'te fiyatı belirleyen bir patron yoktur; fiyatı belirleyen tek şey, havuzdaki **kıtlık ve bolluktur.**
+## ⚔️ Konsept: Zeka ve İnanç Dengesi (AMM Mantığı)
+
+Souls evreninde "stat" değiştirmek (respec) zordur. Souls DEX'te ise bu denge matematiksel bir formülle korunur:
+
+$$x \cdot y = k$$
+
+* **Havuz (Bonfire):** Likidite havuzu, dünyanın dengesidir.
+* **Kıtlık Kuralı:** Eğer havuzdaki **Intelligence** azalırsa (herkes INT alıyorsa), kalan INT'lerin değeri artar. Onu almak için daha fazla **Faith** feda etmeniz gerekir.
+* **Equivalent Exchange:** Değer yoktan var edilmez, sadece dönüştürülür.
 
 ---
 
