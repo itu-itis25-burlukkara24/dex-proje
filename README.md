@@ -1,4 +1,4 @@
-# 🔥 Souls DEX - Merkeziyetsiz Borsa
+# 🔥 Souls DEX - Merkeziyetsiz Borsa Oyunu
 
 > *"To gain Intelligence, you must sacrifice Faith.*  
 > *To gain Faith, you must sacrifice Intelligence."*
@@ -7,11 +7,29 @@
 
 ---
 
-## 🎮 Token Sembolleri
+## � Proje Hakkında
+
+**Souls DEX**, AMM (Automated Market Maker) ve merkeziyetsiz borsa mantığının daha iyi kavranabilmesi için geliştirilmiş, **eğitici ve eğlenceli bir blockchain oyunudur**. 
+
+Bu proje, karmaşık DeFi (Decentralized Finance) kavramlarını **Dark Souls** evreninden ilham alan bir tema ile birleştirerek, öğrenmeyi eğlenceli hale getirir. Oyuncular, Intelligence (INT) ve Faith (FTH) tokenları arasında swap yaparak, likidite sağlayarak ve seviye atlayarak hem blockchain teknolojilerini öğrenir hem de stratejik bir oyun deneyimi yaşar.
+
+**Uniswap V2** constant product formula (x*y=k) üzerine kurulu olan bu DEX, gerçek dünya DeFi protokollerinin nasıl çalıştığını anlamak için mükemmel bir öğrenme aracıdır. %1 swap fee mekanizması, likidite sağlama teşvikleri, ve güvenlik özellikleri ile production-grade bir DeFi uygulamasının tüm temel bileşenlerini içerir.
+
+**Öğrenme Hedefleri:**
+- 🔄 AMM mekanizması ve constant product formula
+- 💧 Likidite havuzları ve LP token'lar
+- 💰 Fee mekanizmaları ve dağıtımı
+- 🔐 Smart contract güvenliği (Reentrancy Guard, access control)
+- ⚡ Blockchain etkileşimi (Viem kütüphanesi)
+- 🎮 Gamification ile DeFi
+
+---
+
+## �🎮 Token Sembolleri
 
 <p align="center">
-  <img src="assets/intelligence_logo.png" width="150" alt="Intelligence Token"/>
-  <img src="assets/faith_logo.png" width="150" alt="Faith Token"/>
+  <img src="assets/intelligence_logo.png" width="250" alt="Intelligence Token"/>
+  <img src="assets/faith_logo.png" width="250" alt="Faith Token"/>
 </p>
 
 ### 🧠 Intelligence (INT)
@@ -68,7 +86,7 @@ Tokenlarının dağılımına göre otomatik class belirlenir:
 
 ### Ana Menü
 - ⚡ **Likidite Ekle** - Havuza INT + FTH ekle
-- ⚔️ **Swap (Fedakarlık)** - Bir özelliği diğeriyle takas et (%3 fee)
+- ⚔️ **Swap (Fedakarlık)** - Bir özelliği diğeriyle takas et (%1 fee)
 - 💀 **Ruh Transferi** - Başka Tarnished'lara token gönder
 - 🪙 **Mint (Founder Only)** - Sadece kurucu yeni token basabilir
 - 🔄 **Wallet Değiştir** - Private key ile güvenli geçiş
@@ -95,7 +113,7 @@ Tokenlarının dağılımına göre otomatik class belirlenir:
 
 ### Smart Contracts
 - `MockToken.sol` - ERC20 token (Intelligence & Faith)
-- `SoulsDEX.sol` - AMM DEX (Uniswap V2 mantığı + %3 fee)
+- `SoulsDEX.sol` - AMM DEX (Uniswap V2 mantığı + %1 fee)
 
 ### JavaScript
 - **Viem** - Blockchain etkileşimi
@@ -229,8 +247,8 @@ ADIM 5: 💧 Havuza İlk Likidite
 ⏳ Fedakarlık sunuluyor...
 ✅ Fedakarlığın kabul edildi! (Blok #45)
 
-Fee: 3 INT (%3)
-Alınan: ~97 FTH
+Fee: 1 INT (%1)
+Alınan: ~99 FTH
 ```
 
 ### 2. Wallet Değiştir (Private Key)
@@ -302,16 +320,16 @@ Alınan: ~97 FTH
 
 ## 🧪 Teknik Detaylar
 
-### AMM Mekanizması (Uniswap V2 + %3 Fee)
+### AMM Mekanizması (Uniswap V2 + %1 Fee)
 
 **Constant Product Formula:**
 ```
 reserveIntelligence * reserveFaith = k (constant)
 ```
 
-**Swap Hesaplama (with 3% fee):**
+**Swap Hesaplama (with 1% fee):**
 ```
-amountInWithFee = amountIn * 970  // %3 fee
+amountInWithFee = amountIn * 990  // %1 fee
 amountOut = (amountInWithFee * reserveOut) / (reserveIn * 1000 + amountInWithFee)
 ```
 
@@ -321,7 +339,7 @@ amountOut = (amountInWithFee * reserveOut) / (reserveIn * 1000 + amountInWithFee
 - 500 token swap → ~%9 impact
 
 **Fee Distribution:**
-- %3 fee havuzda kalır
+- %1 fee havuzda kalır
 - Likidite sağlayanlar orantılı olarak kazanır
 - ~680 swap sonra başabaş (100 token likidite için)
 
@@ -345,7 +363,7 @@ amountOut = (amountInWithFee * reserveOut) / (reserveIn * 1000 + amountInWithFee
 dex-proje/
 ├── src/
 │   ├── MockToken.sol       # ERC20 token (owner-only mint)
-│   └── SoulsDEX.sol         # AMM DEX kontratı (%3 fee)
+│   └── SoulsDEX.sol         # AMM DEX kontratı (%1 fee)
 ├── script/
 │   └── app.js              # TEK ANA SCRIPT (tüm özellikler)
 ├── assets/
@@ -364,15 +382,10 @@ dex-proje/
 
 - ✅ **AMM (Automated Market Maker)** - Uniswap V2 mantığı
 - ✅ **Constant Product Formula** - x * y = k
-- ✅ **Fee Mechanism** - %3 swap fee ve dağıtımı
+- ✅ **Fee Mechanism** - %1 swap fee ve dağıtımı
 - ✅ **Price Impact** - Büyük işlemlerin fiyata etkisi
 - ✅ **Liquidity Pools** - Likidite havuzları nasıl çalışır
 - ✅ **ERC20 Token Standard** - OpenZeppelin implementasyonu
-- ✅ **Reentrancy Guard** - Güvenlik best practices
-- ✅ **Viem** - Modern Ethereum kütüphanesi
-- ✅ **Wallet Management** - Private key authentication
-- ✅ **Gamification** - Level, Rank, Class sistemleri
-- ✅ **Stats Tracking** - Oyuncu ilerlemesi takibi
 
 ---
 

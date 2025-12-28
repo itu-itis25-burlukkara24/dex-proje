@@ -110,8 +110,8 @@ contract SoulsDEX is ReentrancyGuard {
             revert("Invalid token");
         }
         
-        // %3 fee mekanizması (970/1000 = %97)
-        uint256 amountInWithFee = amountIn * 970;
+        // %1 fee mekanizması (990/1000 = %99)
+        uint256 amountInWithFee = amountIn * 990;
         amountOut = (amountInWithFee * reserveOut) / (reserveIn * 1000 + amountInWithFee);
         
         require(amountOut > 0, "Insufficient output amount");
