@@ -7,11 +7,11 @@ out/
 cache/
 broadcast/
 
-# Environment variables
+# Sensitive files
 .env
+ANVIL_ACCOUNTS.txt
+stats.json
 
 # IDE
 .vscode/
 .idea/
-
-
