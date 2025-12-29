@@ -99,8 +99,7 @@ Tokenlarının dağılımına göre otomatik class belirlenir:
 ### Güvenlik Özellikleri (4/4 Aktif)
 1. ✅ **Reentrancy Guard** - Tekrarlı çağrı saldırısı koruması
 2. ✅ **Private Key Authentication** - Wallet değiştirmek için private key gerekli
-3. ✅ **Proportional Liquidity** - Havuz oranını korur, manipülasyonu önler
-4. ✅ **Owner-Only Minting** - Sadece founder token basabilir
+3. ✅ **Owner-Only Minting** - Sadece founder token basabilir
 
 ---
 

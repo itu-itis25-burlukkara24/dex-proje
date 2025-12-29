@@ -359,24 +359,47 @@ async function addLiquidity() {
 
     console.log('\n=== ⚡ LİKİDİTE EKLE ===\n');
 
+    // Havuz oranını göster
+    const reserves = await publicClient.readContract({
+        address: soulsDexAddress,
+        abi: SOULS_DEX_ABI,
+        functionName: 'getReserves'
+    });
+
+    const reserveINT = Number(formatEther(reserves[0]));
+    const reserveFTH = Number(formatEther(reserves[1]));
+    const ratio = reserveINT / reserveFTH;
+
+    console.log(`📊 Havuz Oranı: 1 INT = ${(1 / ratio).toFixed(4)} FTH\n`);
+
     const answers = await inquirer.prompt([
         {
             type: 'input',
             name: 'intAmount',
             message: 'Intelligence miktarı:',
             validate: (input) => !isNaN(input) && Number(input) > 0 || 'Geçerli bir sayı girin'
-        },
+        }
+    ]);
+
+    // Optimal FTH miktarını hesapla ve göster
+    const intAmount = Number(answers.intAmount);
+    const optimalFTH = (intAmount / ratio).toFixed(2);
+
+    console.log(`\n💡 Önerilen Faith miktarı: ${optimalFTH} FTH (havuz oranına göre)\n`);
+
+    const fthAnswer = await inquirer.prompt([
         {
             type: 'input',
             name: 'fthAmount',
             message: 'Faith miktarı:',
+            default: optimalFTH,
             validate: (input) => !isNaN(input) && Number(input) > 0 || 'Geçerli bir sayı girin'
         }
     ]);
 
     try {
-        const intAmount = parseEther(answers.intAmount);
-        const fthAmount = parseEther(answers.fthAmount);
+        const intAmountParsed = parseEther(answers.intAmount);
+        const fthAmountParsed = parseEther(fthAnswer.fthAmount);
 
         console.log('\n⏳ Approve ediliyor...');
 
@@ -384,7 +407,7 @@ async function addLiquidity() {
             address: intelligenceAddress,
             abi: ERC20_ABI,
             functionName: 'approve',
-            args: [soulsDexAddress, intAmount]
+            args: [soulsDexAddress, intAmountParsed]
         });
         await publicClient.waitForTransactionReceipt({ hash: approveIntHash });
 
@@ -392,7 +415,7 @@ async function addLiquidity() {
             address: faithAddress,
             abi: ERC20_ABI,
             functionName: 'approve',
-            args: [soulsDexAddress, fthAmount]
+            args: [soulsDexAddress, fthAmountParsed]
         });
         await publicClient.waitForTransactionReceipt({ hash: approveFthHash });
 
@@ -402,7 +425,7 @@ async function addLiquidity() {
             address: soulsDexAddress,
             abi: SOULS_DEX_ABI,
             functionName: 'addLiquidity',
-            args: [intAmount, fthAmount]
+            args: [intAmountParsed, fthAmountParsed]
         });
         const receipt = await publicClient.waitForTransactionReceipt({ hash: addLiqHash });
 
