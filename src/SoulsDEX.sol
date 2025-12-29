@@ -37,15 +37,7 @@ contract SoulsDEX is ReentrancyGuard {
         if (totalLiquidityTokens == 0) {
             liquidity = sqrt(amountIntelligence * amountFaith);
         } else {
-            // Orantılı likidite kontrolü - %5 tolerans ile
-            uint256 amountFaithOptimal = (amountIntelligence * reserveFaith) / reserveIntelligence;
-            uint256 tolerance = amountFaithOptimal / 20; // %5 tolerans
-            require(
-                amountFaith >= amountFaithOptimal - tolerance && 
-                amountFaith <= amountFaithOptimal + tolerance, 
-                "Oran uyumsuz! Havuz oranini koru"
-            );
-            
+            // Likidite hesaplama (oran kontrolü yok)
             uint256 liquidityIntelligence = (amountIntelligence * totalLiquidityTokens) / reserveIntelligence;
             uint256 liquidityFaith = (amountFaith * totalLiquidityTokens) / reserveFaith;
             liquidity = liquidityIntelligence < liquidityFaith ? liquidityIntelligence : liquidityFaith;
