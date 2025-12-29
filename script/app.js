@@ -85,7 +85,7 @@ function getRank(level) {
 function getClass(intLevel, fthLevel) {
     if (intLevel > fthLevel) return { name: 'Büyücü', emoji: '🔮' };
     if (fthLevel > intLevel) return { name: 'Rahip', emoji: '✨' };
-    return { name: 'Kafir', emoji: '😈' };
+    return { name: 'Günahkar', emoji: '😈' };
 }
 
 function showBanner() {

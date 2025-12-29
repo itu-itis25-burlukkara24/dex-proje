@@ -78,7 +78,7 @@ Tokenlarının dağılımına göre otomatik class belirlenir:
 |-------|-------|-------|----------|
 | **Büyücü** | 🔮 | INT > FTH | Sihir ve zeka odaklı |
 | **Rahip** | ✨ | FTH > INT | İnanç ve mucize odaklı |
-| **Kafir** | 🎭 | INT = FTH | Dengeli, her iki güç |
+| **Günahkar** | 🎭 | INT = FTH | Dengeli, her iki güç |
 
 ---
 
@@ -199,7 +199,7 @@ ADIM 5: 💧 Havuza İlk Likidite
 
 ### Başlangıç Dağılımı
 - **Founder (Wallet #0)**: Kendi seçimi (örn: 1600 INT, 400 FTH = Level 20, Legend, Büyücü)
-- **Diğer 9 Tarnished**: 500 INT + 500 FTH (Level 10 - Warrior, Kafir)
+- **Diğer 9 Tarnished**: 500 INT + 500 FTH (Level 10 - Warrior, Günahkar)
 - **DEX Havuzu**: 5000 INT + 5000 FTH (düşük price impact)
 
 ---
@@ -262,7 +262,7 @@ Alınan: ~99 FTH
 ✅ Wallet doğrulandı!
 ✅ Değiştirildi: 0x7099...
 ⚔️ Warrior (Level 10)
-🎭 Hoşgeldin, Kafir!
+🎭 Hoşgeldin, Günahkar!
 ```
 
 ### 3. Yükseliş İstatistikleri
@@ -310,8 +310,8 @@ Alınan: ~99 FTH
  #  Address          INT   FTH   Level  Rank              Class
 ─────────────────────────────────────────────────────────────────
  0  0xf39F...       1600   400    20   🌟 Legend         🔮 Büyücü
- 1  0x7099...        500   500    10   ⚔️ Warrior        🎭 Kafir
- 2  0x3C44...        500   500    10   ⚔️ Warrior        🎭 Kafir
+ 1  0x7099...        500   500    10   ⚔️ Warrior        🎭 Günahkar
+ 2  0x3C44...        500   500    10   ⚔️ Warrior        🎭 Günahkar
  3  0x9096...        200   100     3   🔪 Survivor       🔮 Büyücü
  ...
 ```
