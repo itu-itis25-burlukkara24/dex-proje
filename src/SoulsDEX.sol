@@ -37,14 +37,12 @@ contract SoulsDEX is ReentrancyGuard {
         if (totalLiquidityTokens == 0) {
             liquidity = sqrt(amountIntelligence * amountFaith);
         } else {
-            // Likidite hesaplama (Uniswap V2 gibi - oran kontrolü yok)
-            uint256 liquidityIntelligence = (amountIntelligence * totalLiquidityTokens) / reserveIntelligence;
-            uint256 liquidityFaith = (amountFaith * totalLiquidityTokens) / reserveFaith;
-            liquidity = liquidityIntelligence < liquidityFaith ? liquidityIntelligence : liquidityFaith;
+           } else {
+    // Likidite hesaplama (oran kontrolü YOK)
+    uint256 liquidityIntelligence = (amountIntelligence * totalLiquidityTokens) / reserveIntelligence;
+    uint256 liquidityFaith = (amountFaith * totalLiquidityTokens) / reserveFaith;
+    liquidity = liquidityIntelligence < liquidityFaith ? liquidityIntelligence : liquidityFaith;
         }
-        
-        require(liquidity > 0, "Insufficient liquidity minted");
-        
         // Token transferleri
         require(intelligence.transferFrom(msg.sender, address(this), amountIntelligence), "Intelligence transfer failed");
         require(faith.transferFrom(msg.sender, address(this), amountFaith), "Faith transfer failed");
